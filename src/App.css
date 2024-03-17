@@ -1,38 +1,33 @@
-.App {
-  text-align: center;
+/* .Hello{
+  border: 2px solid red;
+} */
+/* 
+.Hello2{
+  border:2px solid blue
+} */
+
+.restaurant-image{
+  height:250px;
+}
+.hi{
+  background-color: black;
+  color: "white";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.b {
+  color: green;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.placeholder-restaurant-card{
+  height:250px
 }
-
-.App-link {
-  color: #61dafb;
+.shimmer-card{
+  border:none;
+  width:250px
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* .form-control-lg{
+  width:400px,
+} */
+.location-restaurant-wrapper{
+  margin-top: 100px;
 }
