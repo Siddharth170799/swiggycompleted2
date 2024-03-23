@@ -3,79 +3,93 @@ import axios from "axios";
 
 import InitialComponents from "./Component/initialComponent";
 import Location from "./Component/location";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
+const Fetch = () => {
+  const [data, setdata] = useState([]);
+  const [location, setLocation] = useState({
+    lat: "17.37240",
+    long: "78.43780",
+  });
+  const [restaurantsName, setRestaurants] = useState("");
+  const [filtered, filteredres] = useState([]);
+  // const selector=useSelector((state)=>{
+  //   return state.selector
 
+  // })
 
-
-const Fetch=()=>{
-
-
-const [data,setdata]=useState([])
-const [location,setLocation]=useState({lat : "17.37240",long :"78.43780"})
-const [restaurantsName,setRestaurants]=useState('')
-const [filtered,filteredres]=useState([])
-
-
-const GetData=async ()=>{
-
-    const data2=await axios.get(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location.lat}&lng=${location.long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
+  const GetData = async () => {
+    const data2 = await axios.get(
+      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location.lat}&lng=${location.long}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING `
+    );
     //console.log(res.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants))
-    setdata(data2.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    console.log(data2)
-}
+    setdata(
+      data2.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    console.log(data2);
+  };
 
+  useEffect(() => {
+    GetData();
+  }, [location]);
 
+  useEffect(() => {
+    let filteredData = data.filter((name) =>
+      name.info.name.toLowerCase().includes(restaurantsName.toLocaleLowerCase())
+    );
+    // setdata(filteredData)
+    filteredres(filteredData);
+    // console.log(filterResult)
+  }, [restaurantsName]);
+  console.log(filtered);
 
-useEffect(()=>{
-GetData()
-
-},[location])
-
-useEffect(()=>{
-
-// let filterResult=data.filter((names)=>{
-//  if(names.info.name.toLowerCase().includes(restaurantsName.toLowerCase())==true){
-//   return true
-//  }
-// })
-
-let filteredData = data.filter(name=>name.info.name.toLowerCase().includes(restaurantsName.toLocaleLowerCase()))
-// setdata(filteredData)
-filteredres(filteredData)
-// console.log(filterResult)
-},[restaurantsName])
-console.log(filtered)
-
-return(
+  return (
     <>
-    <div style={{textAlign:"center",}}><b><h1>Food Villa</h1></b></div>
-    {/* <div className="container-fluid"> */}
-    <div style={{width:"400px",textAlign:"center"}}><input value={restaurantsName}  onChange={(e)=>setRestaurants(e.target.value)} class="form-control form-control-lg offset-5" type="text" placeholder="Search Restaurants" aria-label=".form-control-lg example"/>
-
-</div>
-    
-
+      <div id="header">
+        <div>Brand</div>
+       <Link to={"/dishes"}> <div>Search Dishes</div></Link>
+       <Link to={'/rest'}> <div>Search Restaurants</div></Link>
+       <Link to="/cart"> <div>Cart</div></Link>
+      </div>
+      <div style={{ textAlign: "center" }}>
+        <b>
+          <h1>Food Villa</h1>
+        </b>
+      </div>
+      {/* <div className="container-fluid"> */}
+      <div style={{ width: "400px", textAlign: "center",marginTop:"50px" }}>
+        <input
+          value={restaurantsName}
+          onChange={(e) => setRestaurants(e.target.value)}
+          class="form-control form-control-lg offset-5"
+          type="text"
+          placeholder="Search Restaurants"
+          aria-label=".form-control-lg example"
+        />
+      </div>
 
       <div className="row location-restaurant-wrapper ">
-        { <div className="col-2 Hello">
-          <div ><Location setLocation={setLocation}/></div>
-        {/* <div ><b>Location</b></div>
+        {
+          <div className="col-2 Hello">
+            <div>
+              <Location setLocation={setLocation} />
+            </div>
+            {/* <div ><b>Location</b></div>
         <div style={{margin:"10px"}}> <input onChange={()=>{setLocation({lat:"17.4364653",long:"78.5203794"})}} type="radio" name="location"></input> Mettuguda</div>
         <div style={{margin:'10px'}}><input onChange={()=>{{setLocation({lat:"17.3615636",long:"78.4746645"})}}} type="radio" name="location"></input>Charminar</div> */}
-        </div> }
+          </div>
+        }
         {/* <div ><Location setLocation={setLocation}/></div> */}
-             
-        { <div className="col-10 d-flex flex-wrap justify-content-around Hello2">
 
+        {
+          <div className="col-10 d-flex flex-wrap justify-content-around Hello2">
+            <div>
+              <InitialComponents filtered={filtered} restaurants={data} />
+            </div>
 
-<div><InitialComponents
-filtered={filtered}
- restaurants={data}/></div>
-   
-
-
-
-          {/* {data.length>0 ? data.map((item, index) => (
+            {/* {data.length>0 ? data.map((item, index) => (
             <div key={index} className="card mb-3" style={{ width: "18rem" }}>
               <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item?.info?.cloudinaryImageId}`}
  className="card-img-top restaurant-image" alt="..." />
@@ -98,22 +112,13 @@ filtered={filtered}
               </div>
             </div>
           )):<Shimmer/>} */}
-
-
-
-        </div> }
+          </div>
+        }
 
         {/* <div><InitialComponents restaurants={data}/></div> */}
-
       </div>
-    
     </>
-)
+  );
+};
 
-
-
-
-
-}
-
-export default Fetch
+export default Fetch;

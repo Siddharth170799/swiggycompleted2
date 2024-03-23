@@ -31,3 +31,34 @@
 .location-restaurant-wrapper{
   margin-top: 100px;
 }
+
+#header{
+  background-color: burlywood;
+  padding: 25px;
+  display: flex;
+  justify-content: space-around;
+  position: fixed ;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+}
+
+#veg{
+  height:10px;
+ width : 10px;
+ border-radius: 5px;
+ background-color: green;
+}
+#nonveg{
+  height: 10px;
+  width: 10px;
+  border-radius: 5px;
+  background-color: red;
+}
+.imts{
+  height: 150px;
+}
+.dishes-size{
+  height: 130px;
+
+}

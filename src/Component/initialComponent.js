@@ -1,21 +1,28 @@
 import React from "react";
 import Shimmer from "./Shimmer";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const InitialComponents=({restaurants,filtered})=>{
+const navigate=useNavigate('')
+
+
+
 
 // console.log(data)
 
-    return(
-        <div className="col-10 d-flex flex-wrap justify-content-around Hello2">
+
+ const Click = (id) => {
+  // if (restaurants) {
+    navigate(`/restaurant/${id}`)
+    console.log(id)
+  // } 
+}
+
+ return(
+        <div className="col-10 d-flex flex-wrap justify-content-around Hello2 ">
           
-
-
-   
-
-
-
-          {filtered.length>0 ? filtered.map((item, index) => (
+{filtered.length>0 ? filtered.map((item, index) => (
             <div key={index} className="card mb-4 " style={{ width: "18rem" }}>
               <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item?.info?.cloudinaryImageId}`}
  className="card-img-top restaurant-image" alt="..." />
@@ -36,9 +43,9 @@ const InitialComponents=({restaurants,filtered})=>{
                 <p style={{margin:"10px"}}>{item?.info?.locality}</p>
                
               </div>
-            </div>
+            </div >
           )):restaurants.map((item, index) => (
-            <div key={index} className="card mb-3" style={{ width: "18rem" }}>
+            <div key={index} className="card mb-3" style={{ width: "18rem" }} onClick={()=>{Click(item.info.id)}}>
               <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item?.info?.cloudinaryImageId}`}
  className="card-img-top restaurant-image" alt="..." />
  
@@ -64,6 +71,6 @@ const InitialComponents=({restaurants,filtered})=>{
         </div>
 
     )
-}
 
+}
 export default InitialComponents
