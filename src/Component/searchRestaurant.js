@@ -26,7 +26,7 @@ const SearchRestaurants=()=>{
      .then((res)=>{
         setRestaurants(res.data.data?.cards[0]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards)
         
-        console.log(res.data.data?.cards[0]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards)
+        console.log(res.data.data?.cards[0]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards).
      })
     }
 
