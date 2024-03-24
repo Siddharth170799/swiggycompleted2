@@ -86,7 +86,7 @@ const Fetch = () => {
         {
           <div className="col-10 d-flex flex-wrap justify-content-around Hello2">
             <div>
-              <InitialComponents filtered={filtered} restaurants={data} />
+              <InitialComponents filtered={filtered} restaurants={data}  />
             </div>
 
             {/* {data.length>0 ? data.map((item, index) => (

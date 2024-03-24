@@ -10,6 +10,7 @@ const Cart=()=>{
     // if(CartItems){
     //   console.log(CartItems ,"hello")
     // }
+    console.log(CartItems)
     
 let result=CartItems.reduce((acc,item)=>{
   acc=acc+item.Price
