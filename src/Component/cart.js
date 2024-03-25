@@ -12,10 +12,10 @@ const Cart=()=>{
     // }
     console.log(CartItems)
     
-let result=CartItems.reduce((acc,item)=>{
-  acc=acc+item.Price
-  return acc
-},0)
+let result=CartItems.reduce((acc,item)=>
+  acc+item.cartItem.Price
+   ,0)
+   console.log(result)
 
 const dispatch=useDispatch()
    

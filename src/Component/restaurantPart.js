@@ -97,7 +97,7 @@ const Fetch=async()=>{
       <div id="header">
        <Link to="/"> <div>Brand</div></Link>
         <Link to={"/dishes"}> <div>Search Dishes</div></Link>
-        <div>Search Restaurants</div>
+      <Link to={"/rest"}> <div>Search Restaurants</div></Link> 
       <Link to="/cart"> <div>Cart -{CartItems.length>0?CartItems.length:0} </div></Link>
       </div>
 

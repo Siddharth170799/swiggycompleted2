@@ -3,7 +3,7 @@ import React from "react";
 const Shimmer = () => {
   return (
     <>
-      <div class="card shimmer-card" aria-hidden="true">
+      <div class="card shimmer-card" aria-hidden="true" style={{marginLeft:"150px"}}>
         <div class="card-body">
           <h5 class="card-title placeholder-glow">
             <div class="placeholder col-12 placeholder-restaurant-card"></div>

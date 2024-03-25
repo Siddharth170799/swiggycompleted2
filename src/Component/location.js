@@ -44,13 +44,14 @@ const Location=({setLocation})=>{
         // </div>
 
         <>
+       
            <input
           value={location}
           onChange={(e) => setLocationName(e.target.value)}
           
           type="text"
           placeholder="Search Location"
-          
+          style={{marginLeft:"50px"}}
         />
        <div class="list-group location-list-group">
             {locationName.length > 0 ? locationName.map((item,i)=>{
