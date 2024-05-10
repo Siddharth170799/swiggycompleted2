@@ -40,9 +40,10 @@ const CartItems=useSelector((state)=>state.Sid.cart)
     let filteredData = data.filter((name) =>
       name.info.name.toLowerCase().includes(restaurantsName.toLocaleLowerCase())
     );
-    // setdata(filteredData)
-    filteredres(filteredData);
-    // console.log(filterResult)
+   
+    setdata(filteredData)
+
+   
   }, [restaurantsName]);
   console.log(filtered);
 
